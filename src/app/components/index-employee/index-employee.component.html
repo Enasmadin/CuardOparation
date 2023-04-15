@@ -1,0 +1,126 @@
+
+<div class="example-container mat-elevation-z8 mt-4 index-page">
+    <header  class="d-flex justify-content-between align-items-center p-3 ">
+      <p> Manage Employee </p>
+      <div >
+      <button type="button" class="btn btn-danger "  (click)="open(content)" >  <mat-icon>remove_circle_outline</mat-icon> Delete</button>
+      <button  class="btn btn-success ms-2" (click)="addEmployee()" >    <mat-icon>add_circle_outline</mat-icon> Add New Employee</button> 
+    </div>
+    </header>
+    <div class="nolistBox mt-4" *ngIf="message">
+      <div class="alert alert-dark text-center fs-5 fw-100" role="alert">
+        {{ message }}
+      </div>
+    </div>
+  
+   
+    <mat-table #table [dataSource]="dataSource" matSort  *ngIf="emplyeefound">
+     
+      
+      <!-- select -->
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+  
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="empName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.empName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="empEmail">
+        <mat-header-cell *matHeaderCellDef > Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.empEmail}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="empAddress">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.empAddress}} </mat-cell>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="empPhone">
+        <mat-header-cell *matHeaderCellDef > Phone </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.empPhone}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="actions" >
+        <mat-header-cell mat-header-cell *matHeaderCellDef class="w-20"> Action  </mat-header-cell>
+        <mat-cell *matCellDef="let element">   
+          
+           <mat-icon class="material-icons color_yellow" (click)="upDateEmployee(element)">edit</mat-icon>
+           <mat-icon class="material-icons color_red" data-bs-toggle="modal" data-bs-target="#alertModal"  >delete</mat-icon> 
+     
+      </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+   
+    </mat-table>
+  
+    
+  </div>
+  
+  
+  
+  
+  <!-- delte collection -->
+  
+  
+  <ng-template   #content let-modal  >
+    <div class="modal-delte">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Delte Empolyee</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+         
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="detail">  Are You sure want to Delte these  Recordes ? </p>
+           <span class="alert-delte"> This is action can not undone </span>
+      </div>
+      <div   class="modal-footer footer-alert" >
+        
+        <button type="button" class="btn mx-3 " (click)="modal.dismiss('cancel')">Cancel</button>
+        <button type="button" class="btn mx-3 " (click)="deleteDataselect(); modal.close()">Delete</button>
+      </div>
+  
+    </div>
+  
+  </ng-template>
+  
+  <!-- delte one specfic employee -->
+  
+  <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="delteById" aria-hidden="true" *ngFor="let item of newdatasource
+   " >
+    <div class="modal-dialog modal-sm  modal-delte">
+      <div class="modal-content text-start">
+        <div class="modal-header">
+          <p class="modal-title  header" id="ModalLabel"> Delte Empolyee</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <p class="detail">  Are You sure want to Delte these  Recordes ? </p>
+         <span class="alert-delte"> This is action can not undone </span>
+        </div>
+        <div class="modal-footer footer-alert">
+          <button type="button" class="btn mx-3 " data-bs-dismiss="modal">Cansel</button>
+          <button type="button" class="btn mx-3 "  (click)="deleteData(item)" data-bs-dismiss="modal" aria-label="Close">Delte</button>
+        </div>
+      </div>
+    </div>
+  </div> 

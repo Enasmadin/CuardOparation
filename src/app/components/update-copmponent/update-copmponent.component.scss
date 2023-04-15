@@ -1,0 +1,29 @@
+.edit{
+    color: #6a5c5c;
+    
+    header{
+        .color-seconder{
+            color: #6a5c5c;
+        }
+    
+     p{
+        font-size: 25px;
+     }
+     }
+
+    footer{
+        background-color: #bdbbbba3;
+        margin-top: 15px;
+        button{
+            border-radius: 0;
+
+        }
+        button:nth-child(2){
+            background-color: #1d8eb9;
+            color: white;
+            border: none;
+        }
+      }
+
+
+}
