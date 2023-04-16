@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AddComponent } from './components/add/add.component';
+
 import { AddEmpolyeeComponent } from './components/add-empolyee/add-empolyee.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ToastrModule } from 'ngx-toastr';
@@ -27,7 +27,7 @@ import { IndexEmployeeComponent } from './components/index-employee/index-employ
   declarations: [
     AppComponent,
 
-    AddComponent,
+
     AddEmpolyeeComponent,
    
     UpdateCopmponentComponent,
