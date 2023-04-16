@@ -148,17 +148,6 @@ deleteData(item:any) {
   this.getAllEmployee(); 
 }
 
-// pagination
-@ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-ngAfterViewInit() {
-  this.newdatasource.paginator = this.paginator;
-}
-
-
-
-
-
-
 
 
  
