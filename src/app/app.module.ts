@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { UpdateCopmponentComponent } from './components/update-copmponent/update-copmponent.component';
 import { IndexEmployeeComponent } from './components/index-employee/index-employee.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -43,7 +44,8 @@ import { IndexEmployeeComponent } from './components/index-employee/index-employ
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgxPaginationModule
       
     
     

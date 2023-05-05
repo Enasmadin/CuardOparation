@@ -28,11 +28,57 @@ export class IndexEmployeeComponent {
   selectemployee:any;
   emplyeefound:boolean=false;
   resultsLength = 0;
+  itemId:any;
   selection = new SelectionModel<Employee>(true, []);
+  lengthtnewdatasource:number= 0;
+  
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 0;
+  tableSizes: any = [0];
+  public p = 1;
+  public total = 10;
+  start:any;
+  last:any;
+
+  
+ 
 
   constructor(public dialog: MatDialog,private spinner: NgxSpinnerService, private service:EmployeeService,private modalService: NgbModal ) {}
   ngOnInit(): void {
-    this.getAllEmployee()
+    this.getAllEmployee();
+ 
+    
+
+
+  }
+  public pageChange(event: number): void {
+    this.p = event;
+        console.log(this.p);
+   
+  }
+
+listCount(count:any) {
+  this.start = count;
+  this.start = this.start * 10 - 9;
+  this.last = count * 10;
+  if (this.last > this.lengthtnewdatasource) {
+    this.last = this.lengthtnewdatasource;
+   
+  }
+
+ 
+}
+
+  // onPage(event: any) {}
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getAllEmployee();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getAllEmployee();
   }
 
 
@@ -40,18 +86,29 @@ export class IndexEmployeeComponent {
   getAllEmployee(){
     this.spinner.show()
    this.service.getalltasks().subscribe((res:Employee[])=>{
-
-    this.spinner.hide()
+    this.lengthtnewdatasource = res.length
+    this.spinner.hide();
+    this.last;
+    this.start;
+    this.listCount(this.p);
+   
+   
+   
+   
     if(res.length > 0)
     {
       this.dataSource= new MatTableDataSource<Employee>(res)
-      console.log(this.dataSource.data);
+      this.message = '';
       this.newdatasource=this.dataSource.data
       this.dataSource.sort=this.sort;
-      this.emplyeefound= true
+      this.emplyeefound= true;
+      this.start;
+      this.last;
     }
     else{
       this.message = 'No employees found';
+      this.dataSource= new MatTableDataSource<Employee>(res);
+      this.emplyeefound=false
     }
     
     
@@ -84,8 +141,10 @@ export class IndexEmployeeComponent {
 open(content:any) {
    
   this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' } ).result.then((result) => {
+    this.getAllEmployee(); 
    
   }, (reason) => {
+    this.getAllEmployee(); 
    
   });
 }
@@ -100,20 +159,24 @@ deleteDataselect(){
     },error=>{
 
     })
-    this.getAllEmployee(); 
+   
 
   });
 }
 /// add employee //
 addEmployee(){
+  this.getAllEmployee();
   let dialogRef = this.dialog.open(AddEmpolyeeComponent, {
     width: '320px',
    
   });
 
   dialogRef.afterClosed().subscribe(result => {
+
     if(result){
-      this.getAllEmployee();
+       this.getAllEmployee();
+       this.last;
+       this.start;
     }
   });
 }
@@ -134,10 +197,15 @@ upDateEmployee(item:any){
 
 }
 // delte specfic employee 
+findIDSpecfic(item:any){
+ 
+  this.itemId = item.empId 
+  
+}
 
-deleteData(item:any) {
+deleteData() {
    
-  this.service.delteempolybyid(item.empId).subscribe((res:any)=>{
+  this.service.delteempolybyid(this.itemId).subscribe((res:any)=>{
     
     this.getAllEmployee(); 
    
@@ -146,10 +214,7 @@ deleteData(item:any) {
 
   })
   this.getAllEmployee(); 
-}
 
-
-
- 
+ }
 
 }

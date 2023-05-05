@@ -1,0 +1,21 @@
+.addData {
+  color: #6a5c5c;
+}
+.addData header .color-seconder {
+  color: #6a5c5c;
+}
+.addData header p {
+  font-size: 25px;
+}
+.addData footer {
+  background-color: rgba(189, 187, 187, 0.6392156863);
+  margin-top: 15px;
+}
+.addData footer button {
+  border-radius: 0;
+}
+.addData footer button:nth-child(2) {
+  background-color: green;
+  color: white;
+  border: none;
+}/*# sourceMappingURL=add-empolyee.component.css.map */

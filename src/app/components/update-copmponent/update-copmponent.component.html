@@ -23,11 +23,11 @@
                 <div class="col-md-12 data-input">
                     <mat-label>Email</mat-label> 
                     <mat-form-field appearance="outline" class="w-100">
-                        <input matInput type="email"   formControlName="empEmail"  required>
+                        <input matInput  type="text"   formControlName="empEmail"  >
                         <mat-error *ngIf="newEmployee.get('empEmail')?.hasError('required')">
-                            Please enter an Email address
+                            Please enter Email address is required
                           </mat-error>
-                          <mat-error *ngIf="newEmployee.get('empEmail')?.hasError('email')">
+                          <mat-error *ngIf="newEmployee.get('empEmail')?.hasError('pattern')">
                             Please enter a valid email address
                           </mat-error> 
                          

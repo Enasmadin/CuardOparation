@@ -24,7 +24,7 @@ export class UpdateCopmponentComponent implements OnInit {
     this.newEmployee=this.fb.group({
       empId:[this.data.empId||'', Validators.required],
       empName:[this.data.empName||'', Validators.required],
-      empEmail:[this.data.empEmail||'', [Validators.required,Validators.email]],
+      empEmail:[this.data.empEmail||'', [Validators.required, Validators.pattern('^[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')]],
       empAddress:[this.data.empAddress|| '',Validators.required],
       empPhone:[this.data.empPhone||'',[Validators.required,Validators.pattern(/^(011|012|010)\d{8}$/)]]
     })

@@ -1,10 +1,17 @@
 
 .index-page{
     background-color: white;
+   
     header{
+    
         background-color: #2a4568 !important;
         height: 80px;
         margin-bottom: 2px;
+        @media (max-width: 767px)
+        {
+          height: 120px;
+        }
+
         p{
            
             color: white;
@@ -17,6 +24,25 @@
             display: inline-flex;
             justify-content: center;
             padding: 12px;
+            span{
+              display: inline;
+           }
+            @media (max-width: 767px)
+            {
+            
+              padding: 5px;
+              display: block !important;
+              width: 100%;
+              margin: 5px 0px 0px;
+             &:first-of-type{
+              margin-left: 10px;
+             }
+          
+            mat-icon{
+              height: 21px;
+            }
+             
+            }
         }   
         
     }
@@ -98,4 +124,37 @@
         align-items: center;
       }
       
+}
+
+// styled paginator 
+.paginateend{
+ div{
+  padding-left: 20px;
+ }
+  @media (min-width: 767px)
+  {
+ 
+   justify-content: space-between;
+   padding: 8px;
+
+  }
+
+}
+
+::ng-deep ul > li > a {
+
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+::ng-deep ul > li > a::after , ::ng-deep ul > li > a::before {
+
+  display: none !important;
+}
+::ng-deep ul  li::before {
+
+  display: none !important;
+}
+::ng-deep ul  li::after {
+
+  display: none !important;
 }

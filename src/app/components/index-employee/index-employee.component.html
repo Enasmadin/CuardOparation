@@ -3,7 +3,7 @@
     <header  class="d-flex justify-content-between align-items-center p-3 ">
       <p> Manage Employee </p>
       <div >
-      <button type="button" class="btn btn-danger "  (click)="open(content)" >  <mat-icon>remove_circle_outline</mat-icon> Delete</button>
+      <button type="button" class="btn btn-danger "  (click)="open(content)" >  <mat-icon>remove_circle_outline</mat-icon>  Delete</button>
       <button  class="btn btn-success ms-2" (click)="addEmployee()" >    <mat-icon>add_circle_outline</mat-icon> Add New Employee</button> 
     </div>
     </header>
@@ -14,7 +14,8 @@
     </div>
   
    
-    <mat-table #table [dataSource]="dataSource" matSort  *ngIf="emplyeefound">
+    <mat-table #table [dataSource]=" newdatasource | paginate: { itemsPerPage: 10, currentPage: p } 
+   " matSort  *ngIf="emplyeefound">
      
       
       <!-- select -->
@@ -43,7 +44,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="empEmail">
         <mat-header-cell *matHeaderCellDef > Email </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.empEmail}} </mat-cell>
+        <mat-cell *matCellDef="let element" > {{element.empEmail}} </mat-cell>
       </ng-container>
   
       <!-- Weight Column -->
@@ -62,7 +63,7 @@
         <mat-cell *matCellDef="let element">   
           
            <mat-icon class="material-icons color_yellow" (click)="upDateEmployee(element)">edit</mat-icon>
-           <mat-icon class="material-icons color_red" data-bs-toggle="modal" data-bs-target="#alertModal"  >delete</mat-icon> 
+           <mat-icon class="material-icons color_red" data-bs-toggle="modal" data-bs-target="#alertModal"   (click)="findIDSpecfic(element)" >delete</mat-icon> 
      
       </mat-cell>
       </ng-container>
@@ -71,6 +72,17 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
    
     </mat-table>
+   
+    <div class="d-flex  paginateend "  *ngIf="emplyeefound">
+     <div>
+       Showing  {{ (last==null?10:last) -(start==null?1:start) + 1 }}  out of  {{ lengthtnewdatasource }} entires
+     </div>
+
+      <pagination-controls 
+      (pageChange)="listCount($event)"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+    </div>
   
     
   </div>
@@ -119,8 +131,10 @@
         </div>
         <div class="modal-footer footer-alert">
           <button type="button" class="btn mx-3 " data-bs-dismiss="modal">Cansel</button>
-          <button type="button" class="btn mx-3 "  (click)="deleteData(item)" data-bs-dismiss="modal" aria-label="Close">Delte</button>
+          <button type="button" class="btn mx-3 "  (click)="deleteData()" data-bs-dismiss="modal" aria-label="Close">Delte</button>
         </div>
       </div>
     </div>
   </div> 
+
+  <!-- example -->

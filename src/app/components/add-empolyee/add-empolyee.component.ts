@@ -26,7 +26,8 @@ export class AddEmpolyeeComponent implements OnInit  {
   createNewEmpolyee(){
     this.newEmployee=this.fb.group({
       empName:['', Validators.required],
-      empEmail:['', [Validators.required,Validators.email]],
+    
+      empEmail:['', [Validators.required,Validators.pattern('^[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}')]],
       empAddress:['',Validators.required],
       empPhone:['',[Validators.required,Validators.pattern(/^(011|012|010)\d{8}$/)]]
     })

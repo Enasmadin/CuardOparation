@@ -1,0 +1,107 @@
+@charset "UTF-8";
+.index-page {
+  background-color: white;
+}
+.index-page header {
+  background-color: #2a4568 !important;
+  height: 80px;
+  margin-bottom: 2px;
+}
+.index-page header p {
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.index-page header button {
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  padding: 12px;
+}
+.index-page mat-table {
+  padding: 5px 15px;
+  display: block;
+  margin-right: 5px;
+}
+.index-page mat-table mat-header-cell {
+  border-top: 1px solid #e4d7d7;
+}
+.index-page mat-table mat-icon:last-child {
+  color: red;
+}
+.index-page mat-table mat-icon:first-child {
+  color: yellow;
+}
+
+@media (min-width: 576px) {
+  .modal-sm {
+    --bs-modal-width: 400px;
+    padding: 2px;
+  }
+}
+.modal-delte {
+  text-align: start;
+}
+.modal-delte .header {
+  font-size: 25px;
+  color: #6a5c5c;
+}
+.modal-delte .detail {
+  font-size: 16px;
+  font-weight: 300;
+  margin: 0;
+  padding-top: 10px;
+  color: #6a5c5c;
+}
+.modal-delte .alert-delte {
+  color: #e1a319;
+  font-size: 14px;
+  padding: 20px 0;
+  display: inline-block;
+}
+.modal-delte .footer-alert {
+  background-color: rgba(197, 193, 193, 0.16);
+  padding: 20px 0;
+}
+.modal-delte .footer-alert button:nth-child(2) {
+  background-color: rgb(236, 54, 54);
+  color: white;
+}
+.modal-delte .footer-alert button {
+  border-radius: 0;
+  display: inline-block;
+  padding: 10px 30px;
+}
+
+.pagination p {
+  font-family: Lato;
+}
+.pagination .output {
+  text-align: center;
+  font-size: 10rem;
+}
+.pagination numbered-pagination {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.ngx-pagination a, .ngx-pagination button {
+  color: #d19f15 !important;
+  display: block;
+  padding: 0.1875rem 0.625rem;
+  border-radius: 0;
+  text-decoration: none !important;
+}
+
+.ng-star-inserted {
+  text-decoration: none !important;
+}
+
+.ngx-pagination .pagination-next a:after, .ngx-pagination .pagination-next.disabled:after {
+  content: "»";
+  display: none !important;
+  margin-left: 0.5rem;
+}/*# sourceMappingURL=index-employee.component.css.map */
