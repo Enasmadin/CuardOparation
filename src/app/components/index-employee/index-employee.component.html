@@ -14,8 +14,8 @@
     </div>
   
    
-    <mat-table #table [dataSource]=" newdatasource | paginate: { itemsPerPage: 10, currentPage: p } 
-   " matSort  *ngIf="emplyeefound">
+    <mat-table #table [dataSource]=" dataSource  && newdatasource |paginate: { itemsPerPage: 10, currentPage: p } 
+   "   matSort  *ngIf="emplyeefound">
      
       
       <!-- select -->
@@ -56,7 +56,7 @@
       <!-- Symbol Column -->
       <ng-container matColumnDef="empPhone">
         <mat-header-cell *matHeaderCellDef > Phone </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.empPhone}} </mat-cell>
+        <mat-cell *matCellDef="let element">  {{element.empPhone}} </mat-cell>
       </ng-container>
       <ng-container matColumnDef="actions" >
         <mat-header-cell mat-header-cell *matHeaderCellDef class="w-20"> Action  </mat-header-cell>
@@ -73,12 +73,12 @@
    
     </mat-table>
    
-    <div class="d-flex  paginateend "  *ngIf="emplyeefound">
+    <div class="  paginateend "  *ngIf="emplyeefound">
      <div>
        Showing  {{ (last==null?10:last) -(start==null?1:start) + 1 }}  out of  {{ lengthtnewdatasource }} entires
      </div>
 
-      <pagination-controls 
+      <pagination-controls  class="paginate"
       (pageChange)="listCount($event)"
       (pageChange)="p = $event"
     ></pagination-controls>

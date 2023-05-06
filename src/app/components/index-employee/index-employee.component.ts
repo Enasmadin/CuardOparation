@@ -21,7 +21,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class IndexEmployeeComponent {
   dataSource:any;
   newdatasource:any;
-  displayedColumns: string[] = ['select','empName' , 'empEmail' ,'empAddress','empPhone', 'actions'];
+  displayedColumns: string[] = ['select','empName' , 'empEmail' ,'empAddress','empPhone', 'actions' ];
   @ViewChild(MatSort)
   sort!: MatSort;
   message?: string;
@@ -31,7 +31,8 @@ export class IndexEmployeeComponent {
   itemId:any;
   selection = new SelectionModel<Employee>(true, []);
   lengthtnewdatasource:number= 0;
-  
+  // currentPage = 1;
+  // pageSize = 10;
   page: number = 1;
   count: number = 0;
   tableSize: number = 0;
@@ -102,8 +103,7 @@ listCount(count:any) {
       this.newdatasource=this.dataSource.data
       this.dataSource.sort=this.sort;
       this.emplyeefound= true;
-      this.start;
-      this.last;
+     
     }
     else{
       this.message = 'No employees found';
