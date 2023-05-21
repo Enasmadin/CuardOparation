@@ -21,6 +21,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class IndexEmployeeComponent {
   dataSource:any;
   newdatasource:any;
+  paginator:any;
   displayedColumns: string[] = ['select','empName' , 'empEmail' ,'empAddress','empPhone', 'actions' ];
   @ViewChild(MatSort)
   sort!: MatSort;
@@ -99,6 +100,7 @@ listCount(count:any) {
     if(res.length > 0)
     {
       this.dataSource= new MatTableDataSource<Employee>(res)
+      this.dataSource.paginator = this.paginator;
       this.message = '';
       this.newdatasource=this.dataSource.data
       this.dataSource.sort=this.sort;

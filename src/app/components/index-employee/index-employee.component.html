@@ -1,7 +1,13 @@
 
 <div class="example-container mat-elevation-z8 mt-4 index-page">
     <header  class="d-flex justify-content-between align-items-center p-3 ">
-      <p> Manage Employee </p>
+     
+     <div class="d-flex   align-items-center" >
+      <div class="title" >  Manage Employee   </div>
+      <button class=" me-5  translate">  click here </button>
+     </div>
+    
+     
       <div >
       <button type="button" class="btn btn-danger "  (click)="open(content)" >  <mat-icon>remove_circle_outline</mat-icon>  Delete</button>
       <button  class="btn btn-success ms-2" (click)="addEmployee()" >    <mat-icon>add_circle_outline</mat-icon> Add New Employee</button> 
@@ -14,7 +20,7 @@
     </div>
   
    
-    <mat-table #table [dataSource]=" dataSource  && newdatasource |paginate: { itemsPerPage: 10, currentPage: p } 
+    <mat-table #table [dataSource]=" dataSource  && paginator |paginate: { itemsPerPage: 10, currentPage: p } 
    "   matSort  *ngIf="emplyeefound">
      
       
