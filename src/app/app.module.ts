@@ -20,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { UpdateCopmponentComponent } from './components/update-copmponent/update-copmponent.component';
 import { IndexEmployeeComponent } from './components/index-employee/index-employee.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AboutUsComponent } from './work/about-us/about-us.component';
+import { HeaderComponent } from './work/header/header.component';
 
 
 
@@ -32,7 +34,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AddEmpolyeeComponent,
    
     UpdateCopmponentComponent,
-   IndexEmployeeComponent
+   IndexEmployeeComponent,
+   AboutUsComponent,
+   HeaderComponent
   ],
   imports: [
     BrowserModule,
